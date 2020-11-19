@@ -1,0 +1,25 @@
+{
+  "name": "cf7-sms-integration",
+  "version": "1.0.0",
+  "slug": "cf7-sms-integration",
+  "description": "SMS Integration for Contact Form 7",
+  "author": "chilidevs",
+  "scripts": {
+    "makepot": "wpi18n makepot",
+    "zip": "node build/",
+    "generate-md": "wp-readme-to-md"
+  },
+  "license": "GPL",
+  "private": true,
+  "devDependencies": {
+    "archiver": "^3.0.3",
+    "cross-env": "^5.2.0",
+    "file-loader": "^4.1.0",
+    "filesize": "^4.1.2",
+    "webpack": "^4.0.0",
+    "wp-readme-to-markdown": "^1.0.1"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1"
+  }
+}

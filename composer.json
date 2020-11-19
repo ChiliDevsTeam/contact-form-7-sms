@@ -1,0 +1,16 @@
+{
+  "name": "chilidevs/cf7-sms",
+  "description": "SMS Notifications integration for Contact Form 7",
+  "type": "wordpress-plugin",
+  "license": "GPL2",
+  "authors": [
+    {
+      "name": "chilidevs",
+      "email": "info@chilidevs.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "vonage/client": "9999999-dev"
+  }
+}
