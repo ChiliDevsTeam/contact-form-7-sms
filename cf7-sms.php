@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Contact Form 7 SMS Integration
-Plugin URI: https://chilidevs.com/downloads/contact-form-7-sms
+Plugin URI: https://chilidevs.com/downloads/contact-form-7-sms-integration/
 Description: SMS Integration for Contact Form 7
 Version: 1.0.0
 Author: chilidevs
