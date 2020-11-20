@@ -6,6 +6,8 @@ Description: SMS Integration for Contact Form 7
 Version: 1.0.0
 Author: chilidevs
 Author URI: http://chilidevs.com/
+Text Domain: cf7-sms
+Domain Path: /languages/
 License: GPL2
 */
 

@@ -12,16 +12,16 @@ Contact Form 7 SMS Integration
 
 == Description ==
 
-[Contact Form 7](https://wordpress.org/plugins/contact-form-7/) is a really powerful and one of the most popular form builder for WordPress. It can manage multiple contact forms, plus you can customize the form and the mail contents flexibly with simple markup.
+[Contact Form 7](https://wordpress.org/plugins/contact-form-7/) is a really powerful and one of the most popular form builders for WordPress. It can manage multiple contact forms, plus you can customize the form and the mail contents flexibly with simple markup.
 
-Using SMS Integration plugin you can send SMS notifications to admin or any number whenever someone submits your forms – you get a nice text message, wherever you are. Message text can be customized with form data shortcodes. If you’ve got multiple forms, you can setup a different mobile number for each of them
+Using the SMS Integration plugin you can send SMS notifications to admin or any number whenever someone submits your forms – you get a nice text message, wherever you are. The message text can be customized with form data shortcodes. If you’ve got multiple forms, you can setup a different mobile number for each of them
 
 = Basic Features for this plugin =
 
 * Admin can get SMS notification when form data submitted from frontend
 * Admin can set same or different numbers for each contact form
 * SMS text can be customized with different form shortcodes
-* Supported Gateway [Vonage(Nexmo)](https://www.vonage.com/), [ClickSend (Inteltech)](https://www.clicksend.com/en/)(Upcoming) and more...
+* Supported Gateway [Vonage(Nexmo)](https://www.vonage.com/), [ClickSend (Inteltech)](https://www.clicksend.com/en/)(Upcoming), and more...
 
 = Contribute =
 This may have bugs and lack of many features. If you want to contribute on this project, you are more than welcome. Please fork the repository from [Github](https://github.com/chilidevs/contact-form-7-sms/issues).
@@ -51,7 +51,7 @@ A.  Yes, you need to purhcase creadit from gateway service providers. But some p
 
 == Changelog ==
 
-= v1.0.0 -> 14 November, 2020 =
+= v1.0.0 -> 21 November, 2020 =
 Initial version released
 
 == Upgrade Notice ==

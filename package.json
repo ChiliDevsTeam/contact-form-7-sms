@@ -1,7 +1,7 @@
 {
   "name": "cf7-sms-integration",
   "version": "1.0.0",
-  "slug": "cf7-sms-integration",
+  "slug": "cf7-sms",
   "description": "SMS Integration for Contact Form 7",
   "author": "chilidevs",
   "scripts": {

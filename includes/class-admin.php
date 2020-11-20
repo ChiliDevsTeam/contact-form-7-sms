@@ -31,8 +31,8 @@ class CF7_SMS_Admin {
 
         add_action( 'admin_init', [$this, 'admin_init'] );
         add_action( 'admin_menu', [ $this, 'load_menu' ], 12 );
-        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-        add_action( 'chili_settings_form_bottom_cf7_sms_settings', array( $this, 'settings_gateway_fields' ) );
+        add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+        add_action( 'chili_settings_form_bottom_cf7_sms_settings', [ $this, 'settings_gateway_fields' ] );
     }
 
     /**
@@ -173,7 +173,7 @@ class CF7_SMS_Admin {
         $nexmo_api_secret = cf7_sms_get_option( 'nexmo_api_secret', 'cf7_sms_settings', '' );
         $nexmo_from_name  = cf7_sms_get_option( 'nexmo_from_name', 'cf7_sms_settings', '' );
 
-        $nexmo_helper     = sprintf( 'Enter your Nexmo details. Please visit <a href = "%s" target="_blank">%s</a> and get your api keys and options', 'https://dashboard.nexmo.com/login', 'Nexmo' );
+        $nexmo_helper     = sprintf( __( 'Enter your Vonage(Nexmo) details. Please visit <a href = "%s" target="_blank">%s</a> and get your api keys and options', 'cf7-sms' ), 'https://dashboard.nexmo.com/login', 'Nexmo' );
         ?>
 
         <?php do_action( 'cf7_gateway_settings_options_before' ); ?>
@@ -193,18 +193,18 @@ class CF7_SMS_Admin {
                 </tr>
 
                 <tr valign="top">
-                    <th scrope="row"><?php _e( 'Vonage(Nexmo) API Secret', 'cf7-sms' ) ?></th>
+                    <th scrope="row"><?php esc_html_e( 'Vonage(Nexmo) API Secret', 'cf7-sms' ) ?></th>
                     <td>
-                        <input type="text" class="regular-text" name="cf7_sms_settings[nexmo_api_secret]" id="cf7_sms_settings[nexmo_api_secret]" value="<?php echo $nexmo_api_secret; ?>">
-                        <p class="description"><?php _e( 'Enter Vonage(Nexmo) API secret', 'cf7-sms' ); ?></p>
+                        <input type="text" class="regular-text" name="cf7_sms_settings[nexmo_api_secret]" id="cf7_sms_settings[nexmo_api_secret]" value="<?php echo esc_attr( $nexmo_api_secret ); ?>">
+                        <p class="description"><?php esc_html_e( 'Enter Vonage(Nexmo) API secret', 'cf7-sms' ); ?></p>
                     </td>
                 </tr>
 
                 <tr valign="top">
-                    <th scrope="row"><?php _e( 'Vonage(Nexmo) From Name', 'cf7-sms' ) ?></th>
+                    <th scrope="row"><?php esc_html_e( 'Vonage(Nexmo) From Name', 'cf7-sms' ) ?></th>
                     <td>
-                        <input type="text" class="regular-text" name="cf7_sms_settings[nexmo_from_name]" id="cf7_sms_settings[nexmo_from_name]" value="<?php echo $nexmo_from_name; ?>">
-                        <p class="description"><?php _e( 'From which name the message will be sent to the users ( Default : VONAGE )', 'cf7-sms' ); ?></p>
+                        <input type="text" class="regular-text" name="cf7_sms_settings[nexmo_from_name]" id="cf7_sms_settings[nexmo_from_name]" value="<?php echo esc_attr( $nexmo_from_name ); ?>">
+                        <p class="description"><?php esc_html_e( 'From which name the message will be sent to the users ( Default : VONAGE )', 'cf7-sms' ); ?></p>
                     </td>
                 </tr>
 

@@ -74,7 +74,7 @@ class CF7_SMS_Form_Settings {
                                     <?php $form->suggest_mail_tags( 'sms-settings' ); ?></legend>
                                 </p>
                                 <textarea id="wpcf7-mail-body" name="cf7_sms[message]" class="large-text" rows="8"><?php echo ! empty( $options['message'] ) ? esc_attr( $options['message'] ) : ''; ?></textarea>
-                                <p><i><?php esc_html_e( 'Enter your cutom sms text. Just follow the Mail -> Message Body section convention', 'cf7-sms' ); ?></i></p>
+                                <p><i><?php esc_html_e( 'Enter your custom SMS text. Just follow the Mail -> Message Body section convention', 'cf7-sms' ); ?></i></p>
                             </div>
                         </div>
 
