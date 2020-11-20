@@ -12,8 +12,19 @@ Contact Form 7 SMS Integration
 
 == Description ==
 
+[Contact Form 7](https://wordpress.org/plugins/contact-form-7/) is a really powerful and one of the most popular form builder for WordPress. It can manage multiple contact forms, plus you can customize the form and the mail contents flexibly with simple markup.
+
+Using SMS Integration plugin you can send SMS notifications to admin or any number whenever someone submits your forms – you get a nice text message, wherever you are. Message text can be customized with form data shortcodes. If you’ve got multiple forms, you can setup a different mobile number for each of them
+
+= Basic Features for this plugin =
+
+* Admin can get SMS notification when form data submitted from frontend
+* Admin can set same or different numbers for each contact form
+* SMS text can be customized with different form shortcodes
+* Supported Gateway [Vonage(Nexmo)](https://www.vonage.com/), [ClickSend (Inteltech)](https://www.clicksend.com/en/)(Upcoming) and more...
+
 = Contribute =
-This may have bugs and lack of many features. If you want to contribute on this project, you are more than welcome. Please fork the repository from [Github](https://github.com/chilidevs/cf7-sms-integration/issues).
+This may have bugs and lack of many features. If you want to contribute on this project, you are more than welcome. Please fork the repository from [Github](https://github.com/chilidevs/contact-form-7-sms/issues).
 
 = Author =
 Created and maintained by [ChiliDevs](http://chilidevs.com)
@@ -28,13 +39,15 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 == Frequently Asked Questions ==
 
+= Q. Is admin can turn on or off his SMS notification options? =
+A.  Yes, if admin will not configure the form settings then SMS sending automatically disable
+
+= Q. Is extra changes need for sending SMS? =
+A.  Yes, you need to purhcase creadit from gateway service providers. But some providers will give some free credit for testing. Currently we supported Vonage(Nexmo) gateway.
+
 == Screenshots ==
-1. Basic Settings
-2. Gateway Settings
-3. SMS Text Settings
-4. Body Settings
-5. Customer side in checkout
-6. Admin notes in order
+1. Gateway Setttings
+2. Form Settings
 
 == Changelog ==
 

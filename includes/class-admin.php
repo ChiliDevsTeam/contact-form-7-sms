@@ -7,10 +7,25 @@ if ( file_exists( CF7_SMS_PATH . '/libs/class.settings-api.php' ) ) {
     require_once CF7_SMS_PATH . '/libs/class.settings-api.php';
 }
 
+/**
+ * Admin class
+ *
+ * @since 1.0.0
+ */
 class CF7_SMS_Admin {
 
+    /**
+     * Holde Settings API class
+     *
+     * @since 1.0.0
+     */
     private $settings_api;
 
+    /**
+     * Load automatically when class initiate
+     *
+     * @since 1.0.0
+     */
     public function __construct() {
         $this->settings_api = new CF7_SMS_Settings_API();
 
@@ -50,7 +65,11 @@ class CF7_SMS_Admin {
         $this->settings_api->admin_init();
     }
 
-
+    /**
+     * Load SMS setting menu under cf7 main menu
+     *
+     * @since 1.0.0
+     */
     public function load_menu() {
         add_submenu_page( 'wpcf7',
             __( 'SMS Settings', 'cf7-sms' ),
@@ -65,6 +84,8 @@ class CF7_SMS_Admin {
     /**
      * Plugin settings sections.
      *
+     * @since 1.0.0
+     *
      * @return array
      */
     public function get_settings_sections() {
@@ -77,11 +98,13 @@ class CF7_SMS_Admin {
             ],
         ];
 
-        return $sections;
+        return apply_filters( 'cf7_sms_get_settings_sections', $sections );
     }
 
     /**
      * Returns all the settings fields.
+     *
+     * @since 1.0.0
      *
      * @return array settings fields
      */
@@ -99,9 +122,16 @@ class CF7_SMS_Admin {
             ]
         ];
 
-        return $settings_fields;
+        return apply_filters( 'cf7_sms_get_settings_fields', $settings_fields );
     }
 
+    /**
+     * Render setting content page
+     *
+     * @since 1.0.0
+     *
+     * @return void
+     */
     public function cf7_sms_settings_page() {
         ?>
             <div class="wrap">
@@ -117,18 +147,28 @@ class CF7_SMS_Admin {
 
     /**
      * Get sms Gateway settings
+     *
+     * @since 1.0.0
+     *
      * @return array
      */
-    function get_sms_gateway() {
+    public function get_sms_gateway() {
         $gateway = array(
-            ''         => __( '--select--', 'cf7-sms' ),
-            'nexmo'        => __( 'Vonage(Nexmo)', 'cf7-sms' ),
+            ''      => __( '--select--', 'cf7-sms' ),
+            'nexmo' => __( 'Vonage(Nexmo)', 'cf7-sms' ),
         );
 
         return apply_filters( 'cf7_sms_gateway', $gateway );
     }
 
-    function settings_gateway_fields() {
+    /**
+     * Render settings gateway extra fields
+     *
+     * @since 1.0.0
+     *
+     * @return void|HTML
+     */
+    public function settings_gateway_fields() {
         $nexmo_api        = cf7_sms_get_option( 'nexmo_api', 'cf7_sms_settings', '' );
         $nexmo_api_secret = cf7_sms_get_option( 'nexmo_api_secret', 'cf7_sms_settings', '' );
         $nexmo_from_name  = cf7_sms_get_option( 'nexmo_from_name', 'cf7_sms_settings', '' );
@@ -173,8 +213,8 @@ class CF7_SMS_Admin {
             <?php do_action( 'cf7_gateway_fields_after' ); ?>
         </div>
 
-        <?php do_action( 'cf7_gateway_settings_options_after' ) ?>
-
         <?php
+        do_action( 'cf7_gateway_settings_options_after' );
     }
+
 }

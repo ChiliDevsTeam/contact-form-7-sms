@@ -1,5 +1,5 @@
 <?php
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( ! class_exists( 'CF7_SMS_Settings_API' ) ):
 

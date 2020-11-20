@@ -2,7 +2,6 @@
 
 SMS integration for Contact form 7
 
-
 ## Author
 
 [chilidevs](http://chilidevs.com)

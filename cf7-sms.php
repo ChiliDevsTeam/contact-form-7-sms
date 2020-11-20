@@ -45,12 +45,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 class Contact_Form_7_SMS {
 
-     /**
+    /**
      * Plugin version
      *
      * @var string
      */
     public $version = '1.0.0';
+
+    /**
+     * Instance of self
+     *
+     * @var Contact_Form_7_SMS
+     */
+    private static $instance = null;
 
     /**
      * Constructor for the Contact_Form_7_SMS class
@@ -64,7 +71,6 @@ class Contact_Form_7_SMS {
      * @uses add_action()
      */
     public function __construct() {
-
         // Define all constant
         $this->define_constant();
 
@@ -78,13 +84,11 @@ class Contact_Form_7_SMS {
      * and if it doesn't find one, creates it.
      */
     public static function init() {
-        static $instance = false;
-
-        if ( ! $instance ) {
-            $instance = new Contact_Form_7_SMS();
+        if ( self::$instance === null ) {
+            self::$instance = new self();
         }
 
-        return $instance;
+        return self::$instance;
     }
 
     /**
@@ -101,7 +105,35 @@ class Contact_Form_7_SMS {
         define( 'CF7_SMS_ASSETS', plugins_url( '/assets', CF7_SMS_FILE ) );
     }
 
+    /**
+     * Installation notice
+     *
+     * @since 1.0.0
+     *
+     * @return void
+     */
+    public function installation_notice() {
+        ?>
+        <div id="message" class="error notice is-dismissible">
+            <p><?php echo sprintf( wp_kses_post( '<b>Contact Form 7 SMS Integration</b> requires <a href="%s">Contact Form 7</a> to be installed & activated! Go back your <a href="%s">Plugin page</a>', 'cf7-sms' ), 'https://wordpress.org/plugins/contact-form-7/', esc_url( admin_url( 'plugins.php' ) ) ) ?></p>
+            <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php _e( 'Dismiss this notice.', 'cf7-sms' ) ?></span></button>
+        </div>
+        <?php
+    }
+
+    /**
+     * Load SMS plugin all files
+     *
+     * @since 1.0.0
+     *
+     * @return void
+     */
     public function load_cf7_sms() {
+        if ( ! function_exists( 'wpcf7' ) ) {
+            add_action( 'admin_notices', [ $this, 'installation_notice' ], 10 );
+            return;
+        }
+
         //includes file
         $this->includes();
 
@@ -119,7 +151,7 @@ class Contact_Form_7_SMS {
     * @return void
     **/
     public function includes() {
-        // require_once CF7_SMS_PATH . '/vendor/autoload.php';
+        require_once CF7_SMS_PATH . '/vendor/autoload.php';
         require_once CF7_SMS_PATH . '/includes/functions.php';
 
         if ( is_admin() ) {
@@ -127,7 +159,7 @@ class Contact_Form_7_SMS {
         }
 
         require_once CF7_SMS_PATH . '/includes/class-form-settings.php';
-
+        require_once CF7_SMS_PATH . '/includes/class-gateway.php';
     }
 
     /**
