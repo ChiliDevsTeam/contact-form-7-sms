@@ -54,15 +54,15 @@ class CF7_SMS_Form_Settings {
         ?>
         <div id="sms-sortables" class="meta-box-sortables ui-sortable">
             <div id="maildiv" class="postbox ">
-                <div class="handlediv" title="Click to toggle"><br></div>
-                <h3 class="hndle" style="padding:12px;"><span><?php _e( 'Admin SMS Settings', 'cf7-sms' ); ?></span></h3>
+                <div class="handlediv" title="<?php esc_attr_e( 'Click to toggle', 'cf7-sms' ) ?>"><br></div>
+                <h3 class="hndle" style="padding:12px;"><span><?php esc_html_e( 'Admin SMS Settings', 'cf7-sms' ); ?></span></h3>
                 <div class="inside">
                     <div class="mail-fields">
                         <div class="half-left">
                             <div class="mail-field">
-                                <label for="wpcf7-sms-recipient"><?php _e( 'Admin Phone Number:', 'cf7-sms' ); ?></label><br>
+                                <label for="wpcf7-sms-recipient"><?php esc_html_e( 'Admin Phone Number:', 'cf7-sms' ); ?></label><br>
                                 <input type="text" id="wpcf7-sms-recipient" name="cf7_sms[phone]" class="large-text" size="70" value="<?php echo ! empty( $options['phone'] ) ? esc_attr( $options['phone'] ) : ''; ?>">
-                                <p><i><?php printf( __( 'Insert your phone number (e.g.: <code>%s</code> )', 'cf7-sms' ), '+8801673322116' ) ?></i></p>
+                                <p><i><?php echo wp_kses_post( sprintf( __( 'Insert your phone number (e.g.: <code>%s</code>)', 'cf7-sms' ), '+8801673322116'  ) ) ?></i></p>
                             </div>
                         </div>
                         <br>
@@ -104,7 +104,7 @@ class CF7_SMS_Form_Settings {
             return;
         }
 
-        $postdata = wp_unslash($_POST['cf7_sms']);
+        $postdata = wp_unslash( $_POST['cf7_sms'] );
         update_post_meta( $form->id(), '_sms_settings', $postdata );
     }
 
@@ -129,10 +129,11 @@ class CF7_SMS_Form_Settings {
 
         preg_match_all("/\[(.*?)\]/", $form_settings['message'], $matches );
 
-        $find = $matches[0];
+        $find     = $matches[0];
+        $postdata = wp_unslash( $_POST );
 
         foreach ( $matches[1] as $value ) {
-            $replace[] = $_POST[$value];
+            $replace[] = ! empty( $postdata[$value] ) ? $postdata[$value] : '';
         }
 
         $body = str_replace( $find, $replace, $form_settings['message'] );
@@ -144,8 +145,6 @@ class CF7_SMS_Form_Settings {
 
         $sms_gateway = $options['sms_gateway'];
         $gateway     = CF7_Gateway::init()->$sms_gateway( $form_data, $options );
-
-        // error_log( print_r( $gateway, true ) );
 
         if ( is_wp_error( $gateway ) ) {
             return $gateway->get_error_message();

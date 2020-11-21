@@ -1,4 +1,4 @@
-=== Contact Form 7 SMS Integration ===
+=== SMS integration for Contact Form 7 ===
 Contributors: chilidevs
 Tags: cf7-sms, sms, notification, contact-form
 Requires at least: 4.4
