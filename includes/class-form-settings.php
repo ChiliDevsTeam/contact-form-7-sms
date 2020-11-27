@@ -105,7 +105,13 @@ class CF7_SMS_Form_Settings {
         }
 
         $postdata = wp_unslash( $_POST['cf7_sms'] );
-        update_post_meta( $form->id(), '_sms_settings', $postdata );
+
+        $data = array(
+            'phone'   => ! empty( $postdata['phone'] ) ? sanitize_text_field( $postdata['phone'] ): '',
+            'message' => ! empty( $postdata['message'] ) ? sanitize_textarea_field( $postdata['message'] ) : ''
+        );
+
+        update_post_meta( $form->id(), '_sms_settings', $data );
     }
 
     /**
@@ -133,7 +139,7 @@ class CF7_SMS_Form_Settings {
         $postdata = wp_unslash( $_POST );
 
         foreach ( $matches[1] as $value ) {
-            $replace[] = ! empty( $postdata[$value] ) ? $postdata[$value] : '';
+            $replace[] = ! empty( $postdata[$value] ) ? sanitize_text_field( $postdata[$value] ) : '';
         }
 
         $body = str_replace( $find, $replace, $form_settings['message'] );
