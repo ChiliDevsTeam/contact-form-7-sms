@@ -51,7 +51,7 @@ A.  Yes, you need to purhcase creadit from gateway service providers. But some p
 
 == Changelog ==
 
-= v1.0.0 -> 21 November, 2020 =
+= v1.0.0 -> 4 December, 2020 =
 Initial version released
 
 == Upgrade Notice ==

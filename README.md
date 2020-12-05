@@ -1,4 +1,4 @@
-# Contact Form 7 SMS Integration #
+# SMS integration for Contact Form 7 #
 **Contributors:** [chilidevs](https://profiles.wordpress.org/chilidevs/)  
 **Tags:** cf7-sms, sms, notification, contact-form  
 **Requires at least:** 4.4  
@@ -51,7 +51,7 @@ A.  Yes, you need to purhcase creadit from gateway service providers. But some p
 
 ## Changelog ##
 
-### v1.0.0 -> 21 November, 2020 ###
+### v1.0.0 -> 4 December, 2020 ###
 Initial version released
 
 ## Upgrade Notice ##
