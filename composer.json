@@ -11,6 +11,7 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "vonage/client": "9999999-dev"
+    "vonage/client": "9999999-dev",
+    "clicksend/clicksend-php": "^5.0"
   }
 }

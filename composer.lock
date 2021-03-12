@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fac40c6d61d5f59391ccd0156306f4ec",
+    "content-hash": "9e9d18d4a337ad8c1d3907339eece3f2",
     "packages": [
+        {
+            "name": "clicksend/clicksend-php",
+            "version": "v5.0.70",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ClickSend/clicksend-php.git",
+                "reference": "7b32580318573dba5b801c0585498ddfea90d5aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ClickSend/clicksend-php/zipball/7b32580318573dba5b801c0585498ddfea90d5aa",
+                "reference": "7b32580318573dba5b801c0585498ddfea90d5aa",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "^6.2|^7.1",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.12",
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ClickSend\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Swagger and contributors",
+                    "homepage": "https://github.com/swagger-api/swagger-codegen"
+                }
+            ],
+            "homepage": "http://swagger.io",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "support": {
+                "issues": "https://github.com/ClickSend/clicksend-php/issues",
+                "source": "https://github.com/ClickSend/clicksend-php/tree/v5.0.70"
+            },
+            "time": "2021-03-09T01:59:30+00:00"
+        },
         {
             "name": "composer/package-versions-deprecated",
             "version": "dev-master",
