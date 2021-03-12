@@ -154,8 +154,8 @@ class CF7_SMS_Admin {
      */
     public function get_sms_gateway() {
         $gateway = array(
-            ''      => __( '--select--', 'cf7-sms' ),
-            'nexmo' => __( 'Vonage(Nexmo)', 'cf7-sms' ),
+            ''          => __( '--select--', 'cf7-sms' ),
+            'nexmo'     => __( 'Vonage(Nexmo)', 'cf7-sms' ),
             'clicksend' => __( 'Clicksend', 'cf7-sms' ),
         );
 
@@ -246,7 +246,7 @@ class CF7_SMS_Admin {
 
         </div>
         <?php
-        
+
         do_action( 'cf7_gateway_settings_options_after' );
     }
 
