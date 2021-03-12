@@ -156,6 +156,7 @@ class CF7_SMS_Admin {
         $gateway = array(
             ''      => __( '--select--', 'cf7-sms' ),
             'nexmo' => __( 'Vonage(Nexmo)', 'cf7-sms' ),
+            'clicksend' => __( 'Clicksend', 'cf7-sms' ),
         );
 
         return apply_filters( 'cf7_sms_gateway', $gateway );
@@ -174,6 +175,10 @@ class CF7_SMS_Admin {
         $nexmo_from_name  = cf7_sms_get_option( 'nexmo_from_name', 'cf7_sms_settings', '' );
 
         $nexmo_helper     = sprintf( __( 'Enter your Vonage(Nexmo) details. Please visit <a href="%s" target="_blank">%s</a> and get your api keys and options', 'cf7-sms' ), 'https://dashboard.nexmo.com/login', 'Nexmo' );
+
+        $clicksend_username = cf7_sms_get_option( 'clicksend_username', 'cf7_sms_settings', '' );
+        $clicksend_api      = cf7_sms_get_option( 'clicksend_api', 'cf7_sms_settings', '' );
+        $clicksend_helper   = sprintf( __( 'Enter ClickSend details. Please visit <a href="%s" target="_blank">%s</a> and get your username and api keys', 'cf7-sms' ), 'https://dashboard.clicksend.com/signup', 'Clicksend' );
         ?>
 
         <?php do_action( 'cf7_gateway_settings_options_before' ); ?>
@@ -212,8 +217,36 @@ class CF7_SMS_Admin {
 
             <?php do_action( 'cf7_gateway_fields_after' ); ?>
         </div>
+        <!-- starting clicksend div -->
 
+
+        <div class="clicksend_wrapper hide_class">
+            <hr>
+            <p style="margin-top:15px; margin-bottom:0px; font-style: italic; font-size: 14px;">
+                <strong><?php echo wp_kses_post( $clicksend_helper ); ?></strong>
+           </p>
+            <table class="form-table">
+                <tr valign="top">
+                    <th scrope="row"><?php esc_html_e( 'ClickSend Username', 'cf7-sms' ) ?></th>
+                    <td>
+                        <input type="text" class="regular-text" name="cf7_sms_settings[clicksend_username]" id="cf7_sms_settings[clicksend_username]" value="<?php echo esc_attr( $clicksend_username ); ?>">
+                        <p class="description"><?php esc_html_e( 'Enter ClickSend Username', 'cf7-sms' ); ?></p>
+                    </td>
+                </tr>
+
+                <tr valign="top">
+                    <th scrope="row"><?php esc_html_e( 'ClickSend API key', 'cf7-sms' ) ?></th>
+                    <td>
+                        <input type="text" class="regular-text" name="cf7_sms_settings[clicksend_api]" id="cf7_sms_settings[clicksend_api]" value="<?php echo esc_attr( $clicksend_api); ?>">
+                        <p class="description"><?php esc_html_e( 'Enter ClickSend API', 'cf7-sms' ); ?></p>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
         <?php
+        
         do_action( 'cf7_gateway_settings_options_after' );
     }
 

@@ -72,6 +72,64 @@ class CF7_Gateway {
             return $response;
         }
     }
+    
+
+    /**
+     * Send SMS using clicksend gateway
+     *
+     * @since 1.0.0
+     *
+     * @return array $response
+     */
+    public function clicksend( $form_data, $options ) {
+        $clicksend_username   = ! empty( $options['clicksend_username'] ) ? $options['clicksend_username']: '';
+        $clicksend_api_key    = ! empty( $options['clicksend_api'] ) ? $options['clicksend_api']: '';
+    
+        if ( '' === $clicksend_username || '' === $clicksend_api_key ) {
+            return new WP_Error( 'no-gateway-settings', __( 'No Username or API key', 'cf7-sms' ), [ 'status' => 401 ] );
+        }
+
+        if ( empty( $form_data['number'] ) ) {
+            return new WP_Error( 'no-number-found', __( 'No number found for sending SMS', 'cf7-sms' ), [ 'status' => 401 ] );
+        }
+
+        $config = ClickSend\Configuration::getDefaultConfiguration()
+        ->setUsername( $clicksend_username )
+        ->setPassword( $clicksend_api_key );
+
+        $apiInstance = new ClickSend\Api\SMSApi( new GuzzleHttp\Client(), $config );
+        $msg         = new \ClickSend\Model\SmsMessage();
+
+        $msg->setBody( $form_data['body'] ); 
+        $msg->setTo( $form_data['number'] );
+        $msg->setSource( "sdk" );
+
+        // \ClickSend\Model\SmsMessageCollection | SmsMessageCollection model
+        $sms_messages = new \ClickSend\Model\SmsMessageCollection(); 
+        $sms_messages->setMessages([$msg]);
+
+        try {
+
+            $result = $apiInstance->smsSendPost($sms_messages);
+
+            $response = [
+                'message' => __( 'SMS sent successfully', 'cf7-sms' ),
+                'response' => $result
+            ];
+
+            return $response;
+    
+        } catch ( Exception $e ) {
+
+            $response = [
+                'message' => __( 'The message failed with status:', 'cf7-sms' ) . $e->getMessage(),
+                'response' => $e
+            ];
+
+            return $response;
+
+        }
+
+    }
 
 }
-
