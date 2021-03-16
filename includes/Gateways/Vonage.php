@@ -35,8 +35,6 @@ class Vonage implements GatewayInterface {
 
         $message = $response->current();
 
-        error_log( print_r( $message, true ) );
-
         if ( $message->getStatus() == 0 ) {
             $response = [
                 'message' => __( 'SMS sent successfully', 'cf7-sms' ),

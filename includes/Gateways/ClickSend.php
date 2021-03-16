@@ -19,7 +19,7 @@ class ClickSend implements GatewayInterface {
      *
      * @return array|WP_Error
      */
-    public function send( $form_data, $option ) {
+    public function send( $form_data, $options ) {
         $clicksend_username   = ! empty( $options['clicksend_username'] ) ? $options['clicksend_username']: '';
         $clicksend_api_key    = ! empty( $options['clicksend_api'] ) ? $options['clicksend_api']: '';
 
@@ -42,12 +42,11 @@ class ClickSend implements GatewayInterface {
         $msg->setTo( $form_data['number'] );
         $msg->setSource( "sdk" );
 
-        // \ClickSend\Model\SmsMessageCollection | SmsMessageCollection model
         $sms_messages = new ClickSendSMSMessageCollection();
         $sms_messages->setMessages([$msg]);
 
         try {
-            $result = $apiInstance->smsSendPost($sms_messages);
+            $result = $apiInstance->smsSendPost( $sms_messages );
 
             $response = [
                 'message' => __( 'SMS sent successfully', 'cf7-sms' ),
