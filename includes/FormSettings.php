@@ -1,13 +1,17 @@
 <?php
+namespace ChiliDevs\ContactForm7;
+
 // don't call the file directly
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+use WP_Error;
 
 /**
  * Handle individual Form Settings
  *
  * @since 1.0.0
  */
-class CF7_SMS_Form_Settings {
+class FormSettings {
 
     /**
      * Trigger all actions when class initiate
@@ -150,7 +154,11 @@ class CF7_SMS_Form_Settings {
         ];
 
         $sms_gateway = $options['sms_gateway'];
-        $gateway     = CF7_Gateway::init()->$sms_gateway( $form_data, $options );
+
+        $classname = cf7_sms_class_mapping( $sms_gateway );
+
+        $gateway_class = new $classname;
+        $gateway       = $gateway_class->send( $form_data, $options );
 
         if ( is_wp_error( $gateway ) ) {
             return $gateway->get_error_message();

@@ -40,6 +40,9 @@ License: GPL2
 // don't call the file directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+use ChiliDevs\ContactForm7\Admin;
+use ChiliDevs\ContactForm7\FormSettings;
+
 /**
  * Contact_Form_7_SMS class
  *
@@ -155,13 +158,6 @@ class Contact_Form_7_SMS {
     public function includes() {
         require_once CF7_SMS_PATH . '/vendor/autoload.php';
         require_once CF7_SMS_PATH . '/includes/functions.php';
-
-        if ( is_admin() ) {
-            require_once CF7_SMS_PATH . '/includes/class-admin.php';
-        }
-
-        require_once CF7_SMS_PATH . '/includes/class-form-settings.php';
-        require_once CF7_SMS_PATH . '/includes/class-gateway.php';
     }
 
     /**
@@ -185,10 +181,10 @@ class Contact_Form_7_SMS {
     **/
     public function init_classes() {
         if ( is_admin() ) {
-            new CF7_SMS_Admin();
+            new Admin();
         }
 
-        new CF7_SMS_Form_Settings();
+        new FormSettings();
     }
 
     /**

@@ -1,18 +1,17 @@
 <?php
+namespace ChiliDevs\ContactForm7;
+
+use ChiliDevs\ContactForm7\SettingsAPI;
+
 // don't call the file directly
 if ( ! defined( 'ABSPATH' ) ) exit;
-
-// Check if the main settings class included or not
-if ( file_exists( CF7_SMS_PATH . '/libs/class.settings-api.php' ) ) {
-    require_once CF7_SMS_PATH . '/libs/class.settings-api.php';
-}
 
 /**
  * Admin class
  *
  * @since 1.0.0
  */
-class CF7_SMS_Admin {
+class Admin {
 
     /**
      * Holde Settings API class
@@ -27,7 +26,7 @@ class CF7_SMS_Admin {
      * @since 1.0.0
      */
     public function __construct() {
-        $this->settings_api = new CF7_SMS_Settings_API();
+        $this->settings_api = new SettingsAPI();
 
         add_action( 'admin_init', [$this, 'admin_init'] );
         add_action( 'admin_menu', [ $this, 'load_menu' ], 12 );
@@ -156,7 +155,7 @@ class CF7_SMS_Admin {
         $gateway = array(
             ''          => __( '--select--', 'cf7-sms' ),
             'nexmo'     => __( 'Vonage(Nexmo)', 'cf7-sms' ),
-            'clicksend' => __( 'Clicksend', 'cf7-sms' ),
+            'clicksend' => __( 'ClickSend', 'cf7-sms' ),
         );
 
         return apply_filters( 'cf7_sms_gateway', $gateway );

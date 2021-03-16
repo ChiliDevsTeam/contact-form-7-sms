@@ -1,9 +1,11 @@
 <?php
+namespace ChiliDevs\ContactForm7;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'CF7_SMS_Settings_API' ) ):
+if ( ! class_exists( 'SettingsAPI' ) ):
 
-class CF7_SMS_Settings_API {
+class SettingsAPI {
 
     /**
      * settings sections array

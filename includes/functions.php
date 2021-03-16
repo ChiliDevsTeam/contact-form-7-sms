@@ -22,3 +22,19 @@ function cf7_sms_get_option( $option, $section, $default = '' ) {
 
     return $default;
 }
+
+/**
+ * Get sms class name
+ *
+ * @param string $class_name SMS Class name
+ *
+ * @return array
+ */
+function cf7_sms_class_mapping( $class_name = '' ) {
+    $classes = apply_filters( 'cf7_sms_class_map', [
+        'nexmo'     => ChiliDevs\ContactForm7\Gateways\Vonage::class,
+        'clicksend' => ChiliDevs\ContactForm7\Gateways\ClickSend::class,
+    ] );
+
+    return isset( $classes[ $class_name ] ) ? $classes[ $class_name ] : '';
+}
